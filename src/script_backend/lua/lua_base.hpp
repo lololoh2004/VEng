@@ -38,14 +38,13 @@ namespace lua{
         sol::protected_function_result result;
 
         if constexpr (Mode == RunMode::Secure){
-            result = state.script_file(path);
+            result = state.script_file(path, sol::script_pass_on_error);
 
             if (!result.valid()){
                 sol::error err = result;
-                term::msg("[LUA] ERROR : Failed to load script file\n",
-                          "   Details:\n"
-                          "   File path:      ", path, "\n",
-                          "   Reason of crash:", err.what(), "\n");
+                term::msg("[LUA] ERROR : Failed to load script file. Details:\n",
+                          "   File path : ", path, "\n",
+                          "   Reason    : ", err.what(), "\n");
                 if constexpr (std::is_void_v<T>) return;
                 return T{};
             }

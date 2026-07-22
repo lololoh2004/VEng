@@ -16,7 +16,6 @@ public:
     [[nodiscard]] SDL_GPUDevice* get_device() const noexcept { return device; }
 
     bool init()         override;
-    void begin_render() override;
-    void end_render()   override;
+    void update()       override;
     void shutdown()     override;
 };

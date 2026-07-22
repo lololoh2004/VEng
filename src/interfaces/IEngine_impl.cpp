@@ -54,8 +54,9 @@ void IEngine_impl::run(){
         ImGui::ShowDemoWindow();
         ImGui::Render();
 
-        render->begin_render();
-        render->end_render();
+        render->update();
+        // render->begin_render();
+        // render->end_render();
 
         SDL_Delay(1);
     }
