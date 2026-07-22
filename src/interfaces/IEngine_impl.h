@@ -6,7 +6,7 @@
 
 #include <memory>
 
-#include "script_backend/lua/LuaModule.hpp"
+#include "script_backend/lua/lua_base.hpp"
 
 class IEngine_impl : public IEngine{
 public:

@@ -21,6 +21,7 @@ int IEngine_impl::init(int argc, char* argv[]){
     if (!render->init()) return -2;
     term::msg("[SYS] INFO : Conversion of SDLRenderModule from the RenderModule interface\n");
     auto* sdl_render = dynamic_cast<SDLRenderModule*>(render.get());
+    // it can be different (BUT only from RenderModule interface) | example: VKRenderModule
 
     term::msg("[SYS] INFO : Check on SDLRender..");
     if (sdl_render != nullptr) {
@@ -33,11 +34,15 @@ int IEngine_impl::init(int argc, char* argv[]){
 
     term::msg("[SYS] INFO : Enter Lua initialization\n");
     if (!lua::init()) return -4;
+    term::msg("\n");
 
     running = true;
     return 0;
 }
 void IEngine_impl::run(){
+    bool missing_flag = lua::run<bool, lua::RunMode::Secure, 2>("test_bounds.lua");
+    term::msg("log: ", missing_flag);
+
     SDL_Event event;
     while (running){
         while (SDL_PollEvent(&event)){

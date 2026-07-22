@@ -34,7 +34,7 @@ set(IMGUI_SRC
         src/utils/math/clamp.hpp
         src/utils/math/all_math.h
         src/render/backend/IRenderModule.h
-        src/script_backend/lua/LuaModule.hpp
+        src/script_backend/lua/lua_base.hpp
 )
 
 
