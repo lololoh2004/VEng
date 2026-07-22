@@ -32,6 +32,7 @@ bool UIModule::init(SDL_Window* window, void* render_context){
 void UIModule::new_frame(){
     ImGui_ImplSDLGPU3_NewFrame();
     ImGui_ImplSDL3_NewFrame();
+    ImGui::NewFrame();
 }
 void UIModule::shutdown(){
     if (ImGui::GetCurrentContext()){

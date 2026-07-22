@@ -6,7 +6,7 @@
 void UIModule::render(){
     // Test logic (ill replace it later with the callback invocation logic)
     new_frame();
-    ImGui::NewFrame();
+    //ImGui::NewFrame(); now in new_frame()
     ImGui::ShowDemoWindow();
     ImGui::Render();
 }

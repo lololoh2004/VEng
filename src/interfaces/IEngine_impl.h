@@ -4,6 +4,10 @@
 #include "render/backend/SDLRenderModule.h"
 #include "render/ui/UIModule.h"
 
+#include <memory>
+
+#include "script_backend/lua/LuaModule.hpp"
+
 class IEngine_impl : public IEngine{
 public:
     virtual ~IEngine_impl() = default;
@@ -12,10 +16,11 @@ public:
     void run()                        override;
     void shutdown()                   override;
 private:
-    bool running = false;
-    //ScriptModule    script;
+    SDL_Window*     cached_window;
+    bool running  = false;
+
     WindowModule    window;
     UIModule        ui;
-    SDLRenderModule render;
-    //VKRenderModule render;
+
+    std::unique_ptr<IRenderModule> render;
 };
