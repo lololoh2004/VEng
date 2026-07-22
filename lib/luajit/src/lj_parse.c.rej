@@ -1,0 +1,19 @@
+--- /dev/null
++++ /dev/null
+@@ -1153,7 +1159,7 @@ static MSize gola_new(LexState *ls, GCst
+       lj_lex_error(ls, 0, LJ_ERR_XLIMC, LJ_MAX_VSTACK);
+     lj_mem_growvec(ls->L, ls->vstack, ls->sizevstack, LJ_MAX_VSTACK, VarInfo);
+   }
+-  lua_assert(name == NAME_BREAK || lj_tab_getstr(fs->kt, name) != NULL);
++  lua_assert(name == NAME_BREAK || name == NAME_CONTINUE || lj_tab_getstr(fs->kt, name) != NULL);
+   /* NOBARRIER: name is anchored in fs->kt and ls->vstack is not a GCobj. */
+   setgcref(ls->vstack[vtop].name, obj2gco(name));
+   ls->vstack[vtop].startpc = pc;
+@@ -1206,6 +1212,7 @@ static void gola_resolve(LexState *ls, F
+ 	lua_assert((uintptr_t)name >= VARNAME__MAX);
+ 	ls->linenumber = ls->fs->bcbase[vg->startpc].line;
+ 	lua_assert(strref(vg->name) != NAME_BREAK);
++	lua_assert(strref(vg->name) != NAME_CONTINUE);
+ 	lj_lex_error(ls, 0, LJ_ERR_XGSCOPE,
+ 		     strdata(strref(vg->name)), strdata(name));
+       }
