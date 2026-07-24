@@ -1,3 +1,7 @@
+# Include idk (fuck you Branimir)
+# I fucking hate you
+#include(FetchContent)
+
 cmake_minimum_required(VERSION 4.1)
 project(VEng)
 
@@ -35,6 +39,10 @@ set(IMGUI_SRC
         src/utils/math/all_math.h
         src/render/backend/IRenderModule.h
         src/script_backend/lua/lua_base.hpp
+        src/script_backend/lua/reg_api.h
+        src/script_backend/lua/reg_api.cpp
+        src/script_backend/lua/hook_manager.cpp
+        src/script_backend/lua/hook_manager.h
 )
 
 

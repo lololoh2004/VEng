@@ -8,6 +8,11 @@ namespace lua{
         Fast,
         Secure
     };
+    struct CallbackEl{
+        std::string id;
+        sol::function func;
+    };
+    inline std::unordered_map<std::string, std::vector<CallbackEl>> hooks;
 
     inline sol::state& get_state(){
         static sol::state state;
@@ -73,4 +78,6 @@ namespace lua{
             return result[0].get<T>();
         }
     }
+
+
 }
