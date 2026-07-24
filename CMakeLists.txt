@@ -1,7 +1,3 @@
-# Include idk (fuck you Branimir)
-# I fucking hate you
-#include(FetchContent)
-
 cmake_minimum_required(VERSION 4.1)
 project(VEng)
 
